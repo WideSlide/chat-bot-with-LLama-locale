@@ -1,5 +1,5 @@
 from aiogram import Router, types
-from handlers.gpt import send_message_gpt
+from utils.gpt import send_message_gpt
 
 user_private = Router()
 
