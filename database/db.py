@@ -27,6 +27,10 @@ class DataBase:
             return []
         return [{'role': role, 'content':context} for role, context in user]
 
+    def del_user_history(self, user_id):
+        self.cursor.execute('''DELETE FROM users_chat
+                            WHERE user_id = ?''', (user_id,))
+        self.connect.commit()
 
     def drop_table(self):
         self.cursor.execute('''DROP TABLE users_chat''')

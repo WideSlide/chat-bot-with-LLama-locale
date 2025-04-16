@@ -1,7 +1,22 @@
-from aiogram import Router, types
+from aiogram import Router, types, F
+from aiogram.filters import Command
 from utils.gpt import send_message_gpt
+from utils.gpt import db
+
 
 user_private = Router()
+
+
+@user_private.message(Command('start'))
+async def start_chat(message: types.Message):
+    await message.answer('Добро пожаловать в чат с нейросетью')
+
+
+
+@user_private.message(Command('delete_history'))
+async def del_history(message: types.Message):
+    db.del_user_history(message.from_user.id)
+    await message.answer('История сообщений удалена')
 
 
 @user_private.message()

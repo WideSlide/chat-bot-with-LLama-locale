@@ -39,7 +39,5 @@ def send_message_gpt(message: str, user_id: int) -> str:
     
     except Exception as e:
         print('Нет связи с сервером')
-    
-
 
 
